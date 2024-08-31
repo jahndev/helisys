@@ -1,0 +1,43 @@
+<div class="d-flex flex-wrap mb-4">
+    <h1 class="flex-grow-1" i18n="@@contactoProveedor.list.headline">Contacto Proveedors</h1>
+    <div>
+        <a routerLink="/contactoProveedors/add" class="btn btn-primary ms-2" i18n="@@contactoProveedor.list.createNew">Create new Contacto Proveedor</a>
+    </div>
+</div>
+@if (!contactoProveedors || contactoProveedors.length === 0) {
+<div i18n="@@contactoProveedor.list.empty">No Contacto Proveedors could be found.</div>
+} @else {
+<div class="table-responsive">
+    <table class="table table-striped table-hover align-middle">
+        <thead>
+            <tr>
+                <th scope="col" i18n="@@contactoProveedor.cveId.label">Cve Id</th>
+                <th scope="col" i18n="@@contactoProveedor.cveNombre.label">Cve Nombre</th>
+                <th scope="col" i18n="@@contactoProveedor.cpeTelefono.label">Cpe Telefono</th>
+                <th scope="col" i18n="@@contactoProveedor.cpeEmail.label">Cpe Email</th>
+                <th scope="col" i18n="@@contactoProveedor.cpeUrl.label">Cpe Url</th>
+                <th scope="col" i18n="@@contactoProveedor.cpePve.label">Cpe Pve</th>
+                <th><!-- --></th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (contactoProveedor of contactoProveedors; track contactoProveedor.cveId) {
+            <tr>
+                <td>{{ contactoProveedor.cveId }}</td>
+                <td>{{ contactoProveedor.cveNombre }}</td>
+                <td>{{ contactoProveedor.cpeTelefono }}</td>
+                <td>{{ contactoProveedor.cpeEmail }}</td>
+                <td>{{ contactoProveedor.cpeUrl }}</td>
+                <td>{{ contactoProveedor.cpePve }}</td>
+                <td>
+                    <div class="float-end text-nowrap">
+                        <a [routerLink]="['/contactoProveedors/edit', contactoProveedor.cveId]" class="btn btn-sm btn-secondary" i18n="@@contactoProveedor.list.edit">Edit</a>
+                        <button type="button" (click)="confirmDelete(contactoProveedor.cveId!)" class="btn btn-sm btn-secondary" i18n="@@contactoProveedor.list.delete">Delete</button>
+                    </div>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+}

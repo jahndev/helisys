@@ -1,0 +1,15 @@
+<div class="d-flex flex-wrap mb-4">
+    <h1 class="flex-grow-1" i18n="@@contactoProveedor.edit.headline">Edit Contacto Proveedor</h1>
+    <div>
+        <a routerLink="/contactoProveedors" class="btn btn-secondary" i18n="@@contactoProveedor.edit.back">Back to list</a>
+    </div>
+</div>
+<form [formGroup]="editForm" (ngSubmit)="handleSubmit()">
+    <app-input-row [group]="editForm" field="cveId" rowType="number" i18n-label="@@contactoProveedor.cveId.label" label="Cve Id" />
+    <app-input-row [group]="editForm" field="cveNombre" i18n-label="@@contactoProveedor.cveNombre.label" label="Cve Nombre" />
+    <app-input-row [group]="editForm" field="cpeTelefono" i18n-label="@@contactoProveedor.cpeTelefono.label" label="Cpe Telefono" />
+    <app-input-row [group]="editForm" field="cpeEmail" i18n-label="@@contactoProveedor.cpeEmail.label" label="Cpe Email" />
+    <app-input-row [group]="editForm" field="cpeUrl" i18n-label="@@contactoProveedor.cpeUrl.label" label="Cpe Url" />
+    <app-input-row [group]="editForm" field="cpePve" rowType="select" [options]="cpePveValues" i18n-label="@@contactoProveedor.cpePve.label" label="Cpe Pve" />
+    <input type="submit" i18n-value="@@contactoProveedor.edit.headline" value="Edit Contacto Proveedor" class="btn btn-primary mt-4" />
+</form>

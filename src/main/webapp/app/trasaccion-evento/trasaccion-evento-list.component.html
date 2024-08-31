@@ -1,0 +1,39 @@
+<div class="d-flex flex-wrap mb-4">
+    <h1 class="flex-grow-1" i18n="@@trasaccionEvento.list.headline">Trasaccion Eventoes</h1>
+    <div>
+        <a routerLink="/trasaccionEventos/add" class="btn btn-primary ms-2" i18n="@@trasaccionEvento.list.createNew">Create new Trasaccion Evento</a>
+    </div>
+</div>
+@if (!trasaccionEventoes || trasaccionEventoes.length === 0) {
+<div i18n="@@trasaccionEvento.list.empty">No Trasaccion Eventoes could be found.</div>
+} @else {
+<div class="table-responsive">
+    <table class="table table-striped table-hover align-middle">
+        <thead>
+            <tr>
+                <th scope="col" i18n="@@trasaccionEvento.tvoId.label">Tvo Id</th>
+                <th scope="col" i18n="@@trasaccionEvento.tvoFecha.label">Tvo Fecha</th>
+                <th scope="col" i18n="@@trasaccionEvento.tvoTte.label">Tvo Tte</th>
+                <th scope="col" i18n="@@trasaccionEvento.aeronavesAnv.label">Aeronaves Anv</th>
+                <th><!-- --></th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (trasaccionEvento of trasaccionEventoes; track trasaccionEvento.tvoId) {
+            <tr>
+                <td>{{ trasaccionEvento.tvoId }}</td>
+                <td>{{ trasaccionEvento.tvoFecha }}</td>
+                <td>{{ trasaccionEvento.tvoTte }}</td>
+                <td>{{ trasaccionEvento.aeronavesAnv }}</td>
+                <td>
+                    <div class="float-end text-nowrap">
+                        <a [routerLink]="['/trasaccionEventos/edit', trasaccionEvento.tvoId]" class="btn btn-sm btn-secondary" i18n="@@trasaccionEvento.list.edit">Edit</a>
+                        <button type="button" (click)="confirmDelete(trasaccionEvento.tvoId!)" class="btn btn-sm btn-secondary" i18n="@@trasaccionEvento.list.delete">Delete</button>
+                    </div>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+}
