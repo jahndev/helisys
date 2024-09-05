@@ -14,6 +14,8 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema sisin
 -- -----------------------------------------------------
+DROP DATABASE IF EXISTS `sisin`;
+
 CREATE SCHEMA IF NOT EXISTS `sisin` DEFAULT CHARACTER SET utf8 ;
 -- Drop the user 'sisin' if it exists
 DROP USER IF EXISTS 'sisin'@'localhost';
