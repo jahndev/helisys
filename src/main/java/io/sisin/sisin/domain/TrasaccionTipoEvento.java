@@ -13,7 +13,7 @@ import lombok.Setter;
 
 
 @Entity
-@Table(name = "TrasaccionTipoEventoes")
+@Table(name = "TrasaccionTipoEvento")
 @Getter
 @Setter
 public class TrasaccionTipoEvento {

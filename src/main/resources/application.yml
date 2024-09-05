@@ -2,7 +2,7 @@ spring:
   datasource:
     url: ${JDBC_DATABASE_URL:jdbc:mysql://localhost:3306/sisin?serverTimezone=UTC}
     username: ${JDBC_DATABASE_USERNAME:root}
-    password: ${JDBC_DATABASE_PASSWORD:<<YOUR_PASSWORD>>}
+    password: ${JDBC_DATABASE_PASSWORD:<<sisin>>}
     hikari:
       connection-timeout: 30000
       maximum-pool-size: 10
@@ -12,6 +12,7 @@ spring:
     open-in-view: false
     properties:
       hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
         jdbc:
           lob:
             non_contextual_creation: true

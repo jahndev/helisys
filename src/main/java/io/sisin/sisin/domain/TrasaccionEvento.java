@@ -17,7 +17,7 @@ import lombok.Setter;
 
 
 @Entity
-@Table(name = "TrasaccionEventoes")
+@Table(name = "TrasaccionEvento")
 @Getter
 @Setter
 public class TrasaccionEvento {

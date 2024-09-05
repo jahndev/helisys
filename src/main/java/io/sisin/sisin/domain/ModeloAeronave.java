@@ -14,7 +14,7 @@ import lombok.Setter;
 
 
 @Entity
-@Table(name = "ModeloAeronaves")
+@Table(name = "ModeloAeronave")
 @Getter
 @Setter
 public class ModeloAeronave {

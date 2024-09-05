@@ -16,7 +16,7 @@ import lombok.Setter;
 
 
 @Entity
-@Table(name = "Unidads")
+@Table(name = "Unidad")
 @Getter
 @Setter
 public class Unidad {

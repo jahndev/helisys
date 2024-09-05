@@ -8,7 +8,11 @@ plugins {
 group = 'io.sisin'
 version = '0.0.1-SNAPSHOT'
 
-java.sourceCompatibility = '17'
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
 
 bootRun {
     environment SPRING_PROFILES_ACTIVE: environment.SPRING_PROFILES_ACTIVE ?: 'local'
