@@ -27,6 +27,6 @@ public class TipoProducto {
     private String tpoNombreTipo;
 
     @OneToMany(mappedBy = "proTpoIdo")
-    private Set<Producto> proTpoIdoProductoes;
+    private Set<Producto> proTpoIdoProducto;
 
 }

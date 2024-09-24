@@ -42,6 +42,6 @@ public class Transaccion {
     private TrasaccionEvento tceTvo;
 
     @OneToMany(mappedBy = "tcoTce")
-    private Set<TransaccionesProducto> tcoTceTransaccionesProductoes;
+    private Set<TransaccionesProducto> tcoTceTransaccionesProducto;
 
 }

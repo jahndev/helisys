@@ -54,6 +54,6 @@ public class PedidosCompra {
     private Proveedor pcaPve;
 
     @OneToMany(mappedBy = "pptPca")
-    private Set<PedidosProducto> pptPcaPedidosProductoes;
+    private Set<PedidosProducto> pptPcaPedidosProducto;
 
 }

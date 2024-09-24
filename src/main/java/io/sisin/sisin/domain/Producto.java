@@ -57,9 +57,9 @@ public class Producto {
     private TipoProducto proTpoIdo;
 
     @OneToMany(mappedBy = "tcoPro")
-    private Set<TransaccionesProducto> tcoProTransaccionesProductoes;
+    private Set<TransaccionesProducto> tcoProTransaccionesProducto;
 
     @OneToMany(mappedBy = "pptPro")
-    private Set<PedidosProducto> pptProPedidosProductoes;
+    private Set<PedidosProducto> pptProPedidosProducto;
 
 }

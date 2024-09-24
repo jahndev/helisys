@@ -39,9 +39,9 @@ public class Proveedor {
     private String pveDireccion;
 
     @OneToMany(mappedBy = "pcaPve")
-    private Set<PedidosCompra> pcaPvePedidosCompras;
+    private Set<PedidosCompra> pcaPvePedidosCompra;
 
     @OneToMany(mappedBy = "cpePve")
-    private Set<ContactoProveedor> cpePveContactoProveedores;
+    private Set<ContactoProveedor> cpePveContactoProveedor;
 
 }

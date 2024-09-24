@@ -65,9 +65,9 @@ public class Usuario {
     private Escuadron usrEdn;
 
     @OneToMany(mappedBy = "pcaUsr")
-    private Set<PedidosCompra> pcaUsrPedidosCompras;
+    private Set<PedidosCompra> pcaUsrPedidosCompra;
 
     @OneToMany(mappedBy = "tceUsr")
-    private Set<Transaccion> tceUsrTransacciones;
+    private Set<Transaccion> tceUsrTransaccion;
 
 }

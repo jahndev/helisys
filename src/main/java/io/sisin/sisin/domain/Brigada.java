@@ -27,6 +27,6 @@ public class Brigada {
     private String bgaNombre;
 
     @OneToMany(mappedBy = "undBga")
-    private Set<Unidad> undBgaUnidades;
+    private Set<Unidad> undBgaUnidad;
 
 }

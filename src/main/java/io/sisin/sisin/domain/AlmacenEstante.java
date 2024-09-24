@@ -30,6 +30,6 @@ public class AlmacenEstante {
     private String amtNombre;
 
     @OneToMany(mappedBy = "amrAmt")
-    private Set<AlmacenRepisa> amrAmtAlmacenRepisas;
+    private Set<AlmacenRepisa> amrAmtAlmacenRepisa;
 
 }

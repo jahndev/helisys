@@ -55,6 +55,6 @@ public class Unidad {
     private Brigada undBga;
 
     @OneToMany(mappedBy = "ednUnd")
-    private Set<Escuadron> ednUndEscuadrones;
+    private Set<Escuadron> ednUndEscuadron;
 
 }

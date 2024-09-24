@@ -27,6 +27,6 @@ public class TrasaccionTipoEvento {
     private String tteNombre;
 
     @OneToMany(mappedBy = "tvoTte")
-    private Set<TrasaccionEvento> tvoTteTrasaccionEventoes;
+    private Set<TrasaccionEvento> tvoTteTrasaccionEvento;
 
 }

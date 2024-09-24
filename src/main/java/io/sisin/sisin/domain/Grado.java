@@ -27,6 +27,6 @@ public class Grado {
     private String gdoNombre;
 
     @OneToMany(mappedBy = "usrGdo")
-    private Set<Usuario> usrGdoUsuarios;
+    private Set<Usuario> usrGdoUsuario;
 
 }

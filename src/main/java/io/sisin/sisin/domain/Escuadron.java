@@ -34,6 +34,6 @@ public class Escuadron {
     private Unidad ednUnd;
 
     @OneToMany(mappedBy = "usrEdn")
-    private Set<Usuario> usrEdnUsuarios;
+    private Set<Usuario> usrEdnUsuario;
 
 }
