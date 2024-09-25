@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping(value = "/api/contactoProveedors", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/contactoProveedor", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ContactoProveedorResource {
 
     private final ContactoProveedorService contactoProveedorService;
@@ -37,7 +37,7 @@ public class ContactoProveedorResource {
     }
 
     @GetMapping
-    public ResponseEntity<List<ContactoProveedorDTO>> getAllContactoProveedors() {
+    public ResponseEntity<List<ContactoProveedorDTO>> getAllContactoProveedor() {
         return ResponseEntity.ok(contactoProveedorService.findAll());
     }
 

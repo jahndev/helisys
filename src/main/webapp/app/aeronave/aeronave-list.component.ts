@@ -24,7 +24,7 @@ export class AeronaveListComponent implements OnInit, OnDestroy {
     const messages: Record<string, string> = {
       confirm: $localize`:@@delete.confirm:Do you really want to delete this element? This cannot be undone.`,
       deleted: $localize`:@@aeronave.delete.success:Aeronave was removed successfully.`,
-      'aeronave.trasaccionEvento.aeronavesAnv.referenced': $localize`:@@aeronave.trasaccionEvento.aeronavesAnv.referenced:This entity is still referenced by Trasaccion Evento ${details?.id} via field Aeronaves Anv.`,
+      'aeronave.transaccionEvento.aeronavesAnv.referenced': $localize`:@@aeronave.transaccionEvento.aeronavesAnv.referenced:This entity is still referenced by Transaccion Evento ${details?.id} via field Aeronaves Anv.`,
       'aeronave.modeloAeronave.mreAnv.referenced': $localize`:@@aeronave.modeloAeronave.mreAnv.referenced:This entity is still referenced by Modelo Aeronave ${details?.id} via field Mre Anv.`
     };
     return messages[key];
@@ -42,7 +42,7 @@ export class AeronaveListComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.navigationSubscription!.unsubscribe();
   }
-  
+
   loadData() {
     this.aeronaveService.getAllAeronaves()
         .subscribe({

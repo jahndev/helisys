@@ -1,11 +1,11 @@
 <div class="d-flex flex-wrap mb-4">
-    <h1 class="flex-grow-1" i18n="@@producto.list.headline">Productoes</h1>
+    <h1 class="flex-grow-1" i18n="@@producto.list.headline">Producto</h1>
     <div>
-        <a routerLink="/productos/add" class="btn btn-primary ms-2" i18n="@@producto.list.createNew">Create new Producto</a>
+        <a routerLink="/producto/add" class="btn btn-primary ms-2" i18n="@@producto.list.createNew">Create new Producto</a>
     </div>
 </div>
-@if (!productoes || productoes.length === 0) {
-<div i18n="@@producto.list.empty">No Productoes could be found.</div>
+@if (!producto || producto.length === 0) {
+<div i18n="@@producto.list.empty">No Producto could be found.</div>
 } @else {
 <div class="table-responsive">
     <table class="table table-striped table-hover align-middle">
@@ -23,7 +23,7 @@
             </tr>
         </thead>
         <tbody>
-            @for (producto of productoes; track producto.proId) {
+            @for (producto of producto; track producto.proId) {
             <tr>
                 <td>{{ producto.proId }}</td>
                 <td>{{ producto.proNumeroParte }}</td>
@@ -35,7 +35,7 @@
                 <td>{{ producto.proTipoDocumento }}</td>
                 <td>
                     <div class="float-end text-nowrap">
-                        <a [routerLink]="['/productos/edit', producto.proId]" class="btn btn-sm btn-secondary" i18n="@@producto.list.edit">Edit</a>
+                        <a [routerLink]="['/producto/edit', producto.proId]" class="btn btn-sm btn-secondary" i18n="@@producto.list.edit">Edit</a>
                         <button type="button" (click)="confirmDelete(producto.proId!)" class="btn btn-sm btn-secondary" i18n="@@producto.list.delete">Delete</button>
                     </div>
                 </td>

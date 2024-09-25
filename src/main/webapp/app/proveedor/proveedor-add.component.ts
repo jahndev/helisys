@@ -44,7 +44,7 @@ export class ProveedorAddComponent {
     const data = new ProveedorDTO(this.addForm.value);
     this.proveedorService.createProveedor(data)
         .subscribe({
-          next: () => this.router.navigate(['/proveedors'], {
+          next: () => this.router.navigate(['/proveedor'], {
             state: {
               msgSuccess: this.getMessage('created')
             }

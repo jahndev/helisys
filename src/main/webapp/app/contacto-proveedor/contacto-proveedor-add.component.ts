@@ -55,7 +55,7 @@ export class ContactoProveedorAddComponent implements OnInit {
     const data = new ContactoProveedorDTO(this.addForm.value);
     this.contactoProveedorService.createContactoProveedor(data)
         .subscribe({
-          next: () => this.router.navigate(['/contactoProveedors'], {
+          next: () => this.router.navigate(['/contactoProveedor'], {
             state: {
               msgSuccess: this.getMessage('created')
             }

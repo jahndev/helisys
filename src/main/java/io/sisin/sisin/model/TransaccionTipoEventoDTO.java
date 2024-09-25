@@ -8,7 +8,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class TrasaccionTipoEventoDTO {
+public class TransaccionTipoEventoDTO {
 
     private Integer tteId;
 

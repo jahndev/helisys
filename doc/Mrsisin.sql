@@ -270,7 +270,7 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `sisin`.`TRASACCION_TIPO_EVENTO`
+-- Table `sisin`.`TRANSACCION_TIPO_EVENTO`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sisin`.`TRASACCION_TIPO_EVENTO` (
   `tte_id` INT NOT NULL AUTO_INCREMENT,

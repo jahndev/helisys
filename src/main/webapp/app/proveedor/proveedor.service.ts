@@ -10,9 +10,9 @@ import { ProveedorDTO } from 'app/proveedor/proveedor.model';
 export class ProveedorService {
 
   http = inject(HttpClient);
-  resourcePath = environment.apiPath + '/api/proveedors';
+  resourcePath = environment.apiPath + '/api/proveedor';
 
-  getAllProveedors() {
+  getAllProveedor() {
     return this.http.get<ProveedorDTO[]>(this.resourcePath);
   }
 

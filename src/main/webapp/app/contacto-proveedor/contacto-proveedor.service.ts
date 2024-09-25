@@ -12,9 +12,9 @@ import { transformRecordToMap } from 'app/common/utils';
 export class ContactoProveedorService {
 
   http = inject(HttpClient);
-  resourcePath = environment.apiPath + '/api/contactoProveedors';
+  resourcePath = environment.apiPath + '/api/contactoProveedor';
 
-  getAllContactoProveedors() {
+  getAllContactoProveedor() {
     return this.http.get<ContactoProveedorDTO[]>(this.resourcePath);
   }
 

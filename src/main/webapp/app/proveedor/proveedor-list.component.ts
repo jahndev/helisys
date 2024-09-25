@@ -17,7 +17,7 @@ export class ProveedorListComponent implements OnInit, OnDestroy {
   proveedorService = inject(ProveedorService);
   errorHandler = inject(ErrorHandler);
   router = inject(Router);
-  proveedors?: ProveedorDTO[];
+  proveedor?: ProveedorDTO[];
   navigationSubscription?: Subscription;
 
   getMessage(key: string, details?: any) {
@@ -42,11 +42,11 @@ export class ProveedorListComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.navigationSubscription!.unsubscribe();
   }
-  
+
   loadData() {
-    this.proveedorService.getAllProveedors()
+    this.proveedorService.getAllProveedor()
         .subscribe({
-          next: (data) => this.proveedors = data,
+          next: (data) => this.proveedor = data,
           error: (error) => this.errorHandler.handleServerError(error.error)
         });
   }
@@ -55,7 +55,7 @@ export class ProveedorListComponent implements OnInit, OnDestroy {
     if (confirm(this.getMessage('confirm'))) {
       this.proveedorService.deleteProveedor(pveId)
           .subscribe({
-            next: () => this.router.navigate(['/proveedors'], {
+            next: () => this.router.navigate(['/proveedor'], {
               state: {
                 msgInfo: this.getMessage('deleted')
               }
@@ -63,7 +63,7 @@ export class ProveedorListComponent implements OnInit, OnDestroy {
             error: (error) => {
               if (error.error?.code === 'REFERENCED') {
                 const messageParts = error.error.message.split(',');
-                this.router.navigate(['/proveedors'], {
+                this.router.navigate(['/proveedor'], {
                   state: {
                     msgError: this.getMessage(messageParts[0], { id: messageParts[1] })
                   }

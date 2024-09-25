@@ -1,9 +1,9 @@
 package io.sisin.sisin.rest;
 
-import io.sisin.sisin.domain.TrasaccionEvento;
+import io.sisin.sisin.domain.TransaccionEvento;
 import io.sisin.sisin.domain.Usuario;
 import io.sisin.sisin.model.TransaccionDTO;
-import io.sisin.sisin.repos.TrasaccionEventoRepository;
+import io.sisin.sisin.repos.TransaccionEventoRepository;
 import io.sisin.sisin.repos.UsuarioRepository;
 import io.sisin.sisin.service.TransaccionService;
 import io.sisin.sisin.util.CustomCollectors;
@@ -33,14 +33,14 @@ public class TransaccionResource {
 
     private final TransaccionService transaccionService;
     private final UsuarioRepository usuarioRepository;
-    private final TrasaccionEventoRepository trasaccionEventoRepository;
+    private final TransaccionEventoRepository transaccionEventoRepository;
 
     public TransaccionResource(final TransaccionService transaccionService,
             final UsuarioRepository usuarioRepository,
-            final TrasaccionEventoRepository trasaccionEventoRepository) {
+            final TransaccionEventoRepository transaccionEventoRepository) {
         this.transaccionService = transaccionService;
         this.usuarioRepository = usuarioRepository;
-        this.trasaccionEventoRepository = trasaccionEventoRepository;
+        this.transaccionEventoRepository = transaccionEventoRepository;
     }
 
     @GetMapping
@@ -91,9 +91,9 @@ public class TransaccionResource {
 
     @GetMapping("/tceTvoValues")
     public ResponseEntity<Map<Integer, Integer>> getTceTvoValues() {
-        return ResponseEntity.ok(trasaccionEventoRepository.findAll(Sort.by("tvoId"))
+        return ResponseEntity.ok(transaccionEventoRepository.findAll(Sort.by("tvoId"))
                 .stream()
-                .collect(CustomCollectors.toSortedMap(TrasaccionEvento::getTvoId, TrasaccionEvento::getTvoId)));
+                .collect(CustomCollectors.toSortedMap(TransaccionEvento::getTvoId, TransaccionEvento::getTvoId)));
     }
 
 }

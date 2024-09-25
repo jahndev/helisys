@@ -30,7 +30,7 @@ public class Aeronave {
     private String anvNombre;
 
     @OneToMany(mappedBy = "aeronavesAnv")
-    private Set<TrasaccionEvento> aeronavesAnvTrasaccionEvento;
+    private Set<TransaccionEvento> aeronaveAnvTransaccionEvento;
 
     @OneToMany(mappedBy = "mreAnv")
     private Set<ModeloAeronave> mreAnvModeloAeronave;

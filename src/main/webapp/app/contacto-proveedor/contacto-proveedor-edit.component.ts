@@ -65,7 +65,7 @@ export class ContactoProveedorEditComponent implements OnInit {
     const data = new ContactoProveedorDTO(this.editForm.value);
     this.contactoProveedorService.updateContactoProveedor(this.currentCveId!, data)
         .subscribe({
-          next: () => this.router.navigate(['/contactoProveedors'], {
+          next: () => this.router.navigate(['/contactoProveedor'], {
             state: {
               msgSuccess: this.getMessage('updated')
             }

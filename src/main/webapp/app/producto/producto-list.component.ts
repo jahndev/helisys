@@ -17,7 +17,7 @@ export class ProductoListComponent implements OnInit, OnDestroy {
   productoService = inject(ProductoService);
   errorHandler = inject(ErrorHandler);
   router = inject(Router);
-  productoes?: ProductoDTO[];
+  producto?: ProductoDTO[];
   navigationSubscription?: Subscription;
 
   getMessage(key: string, details?: any) {
@@ -42,11 +42,11 @@ export class ProductoListComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.navigationSubscription!.unsubscribe();
   }
-  
+
   loadData() {
-    this.productoService.getAllProductoes()
+    this.productoService.getAllProducto()
         .subscribe({
-          next: (data) => this.productoes = data,
+          next: (data) => this.producto = data,
           error: (error) => this.errorHandler.handleServerError(error.error)
         });
   }
@@ -55,7 +55,7 @@ export class ProductoListComponent implements OnInit, OnDestroy {
     if (confirm(this.getMessage('confirm'))) {
       this.productoService.deleteProducto(proId)
           .subscribe({
-            next: () => this.router.navigate(['/productos'], {
+            next: () => this.router.navigate(['/producto'], {
               state: {
                 msgInfo: this.getMessage('deleted')
               }
@@ -63,7 +63,7 @@ export class ProductoListComponent implements OnInit, OnDestroy {
             error: (error) => {
               if (error.error?.code === 'REFERENCED') {
                 const messageParts = error.error.message.split(',');
-                this.router.navigate(['/productos'], {
+                this.router.navigate(['/producto'], {
                   state: {
                     msgError: this.getMessage(messageParts[0], { id: messageParts[1] })
                   }

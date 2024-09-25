@@ -66,7 +66,7 @@ export class ProductoAddComponent implements OnInit {
     const data = new ProductoDTO(this.addForm.value);
     this.productoService.createProducto(data)
         .subscribe({
-          next: () => this.router.navigate(['/productos'], {
+          next: () => this.router.navigate(['/producto'], {
             state: {
               msgSuccess: this.getMessage('created')
             }

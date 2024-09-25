@@ -1,11 +1,11 @@
 package io.sisin.sisin.rest;
 
 import io.sisin.sisin.domain.Aeronave;
-import io.sisin.sisin.domain.TrasaccionTipoEvento;
-import io.sisin.sisin.model.TrasaccionEventoDTO;
+import io.sisin.sisin.domain.TransaccionTipoEvento;
+import io.sisin.sisin.model.TransaccionEventoDTO;
 import io.sisin.sisin.repos.AeronaveRepository;
-import io.sisin.sisin.repos.TrasaccionTipoEventoRepository;
-import io.sisin.sisin.service.TrasaccionEventoService;
+import io.sisin.sisin.repos.TransaccionTipoEventoRepository;
+import io.sisin.sisin.service.TransaccionEventoService;
 import io.sisin.sisin.util.CustomCollectors;
 import io.sisin.sisin.util.ReferencedException;
 import io.sisin.sisin.util.ReferencedWarning;
@@ -28,65 +28,65 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping(value = "/api/trasaccionEventos", produces = MediaType.APPLICATION_JSON_VALUE)
-public class TrasaccionEventoResource {
+@RequestMapping(value = "/api/transaccionEvento", produces = MediaType.APPLICATION_JSON_VALUE)
+public class TransaccionEventoResource {
 
-    private final TrasaccionEventoService trasaccionEventoService;
-    private final TrasaccionTipoEventoRepository trasaccionTipoEventoRepository;
+    private final TransaccionEventoService transaccionEventoService;
+    private final TransaccionTipoEventoRepository transaccionTipoEventoRepository;
     private final AeronaveRepository aeronaveRepository;
 
-    public TrasaccionEventoResource(final TrasaccionEventoService trasaccionEventoService,
-            final TrasaccionTipoEventoRepository trasaccionTipoEventoRepository,
+    public TransaccionEventoResource(final TransaccionEventoService transaccionEventoService,
+            final TransaccionTipoEventoRepository transaccionTipoEventoRepository,
             final AeronaveRepository aeronaveRepository) {
-        this.trasaccionEventoService = trasaccionEventoService;
-        this.trasaccionTipoEventoRepository = trasaccionTipoEventoRepository;
+        this.transaccionEventoService = transaccionEventoService;
+        this.transaccionTipoEventoRepository = transaccionTipoEventoRepository;
         this.aeronaveRepository = aeronaveRepository;
     }
 
     @GetMapping
-    public ResponseEntity<List<TrasaccionEventoDTO>> getAllTrasaccionEventos() {
-        return ResponseEntity.ok(trasaccionEventoService.findAll());
+    public ResponseEntity<List<TransaccionEventoDTO>> getAllTransaccionEvento() {
+        return ResponseEntity.ok(transaccionEventoService.findAll());
     }
 
     @GetMapping("/{tvoId}")
-    public ResponseEntity<TrasaccionEventoDTO> getTrasaccionEvento(
+    public ResponseEntity<TransaccionEventoDTO> getTransaccionEvento(
             @PathVariable(name = "tvoId") final Integer tvoId) {
-        return ResponseEntity.ok(trasaccionEventoService.get(tvoId));
+        return ResponseEntity.ok(transaccionEventoService.get(tvoId));
     }
 
     @PostMapping
     @ApiResponse(responseCode = "201")
-    public ResponseEntity<Integer> createTrasaccionEvento(
-            @RequestBody @Valid final TrasaccionEventoDTO trasaccionEventoDTO) {
-        final Integer createdTvoId = trasaccionEventoService.create(trasaccionEventoDTO);
+    public ResponseEntity<Integer> createTransaccionEvento(
+            @RequestBody @Valid final TransaccionEventoDTO transaccionEventoDTO) {
+        final Integer createdTvoId = transaccionEventoService.create(transaccionEventoDTO);
         return new ResponseEntity<>(createdTvoId, HttpStatus.CREATED);
     }
 
     @PutMapping("/{tvoId}")
-    public ResponseEntity<Integer> updateTrasaccionEvento(
+    public ResponseEntity<Integer> updateTransaccionEvento(
             @PathVariable(name = "tvoId") final Integer tvoId,
-            @RequestBody @Valid final TrasaccionEventoDTO trasaccionEventoDTO) {
-        trasaccionEventoService.update(tvoId, trasaccionEventoDTO);
+            @RequestBody @Valid final TransaccionEventoDTO transaccionEventoDTO) {
+        transaccionEventoService.update(tvoId, transaccionEventoDTO);
         return ResponseEntity.ok(tvoId);
     }
 
     @DeleteMapping("/{tvoId}")
     @ApiResponse(responseCode = "204")
-    public ResponseEntity<Void> deleteTrasaccionEvento(
+    public ResponseEntity<Void> deleteTransaccionEvento(
             @PathVariable(name = "tvoId") final Integer tvoId) {
-        final ReferencedWarning referencedWarning = trasaccionEventoService.getReferencedWarning(tvoId);
+        final ReferencedWarning referencedWarning = transaccionEventoService.getReferencedWarning(tvoId);
         if (referencedWarning != null) {
             throw new ReferencedException(referencedWarning);
         }
-        trasaccionEventoService.delete(tvoId);
+        transaccionEventoService.delete(tvoId);
         return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/tvoTteValues")
     public ResponseEntity<Map<Integer, String>> getTvoTteValues() {
-        return ResponseEntity.ok(trasaccionTipoEventoRepository.findAll(Sort.by("tteId"))
+        return ResponseEntity.ok(transaccionTipoEventoRepository.findAll(Sort.by("tteId"))
                 .stream()
-                .collect(CustomCollectors.toSortedMap(TrasaccionTipoEvento::getTteId, TrasaccionTipoEvento::getTteNombre)));
+                .collect(CustomCollectors.toSortedMap(TransaccionTipoEvento::getTteId, TransaccionTipoEvento::getTteNombre)));
     }
 
     @GetMapping("/aeronavesAnvValues")

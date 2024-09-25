@@ -76,7 +76,7 @@ export class ProductoEditComponent implements OnInit {
     const data = new ProductoDTO(this.editForm.value);
     this.productoService.updateProducto(this.currentProId!, data)
         .subscribe({
-          next: () => this.router.navigate(['/productos'], {
+          next: () => this.router.navigate(['/producto'], {
             state: {
               msgSuccess: this.getMessage('updated')
             }
