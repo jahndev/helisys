@@ -17,7 +17,7 @@ export class ContactoProveedorListComponent implements OnInit, OnDestroy {
   contactoProveedorService = inject(ContactoProveedorService);
   errorHandler = inject(ErrorHandler);
   router = inject(Router);
-  contactoProveedors?: ContactoProveedorDTO[];
+  contactoProveedor?: ContactoProveedorDTO[];
   navigationSubscription?: Subscription;
 
   getMessage(key: string, details?: any) {
@@ -39,11 +39,11 @@ export class ContactoProveedorListComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.navigationSubscription!.unsubscribe();
   }
-  
+
   loadData() {
-    this.contactoProveedorService.getAllContactoProveedors()
+    this.contactoProveedorService.getAllContactoProveedor()
         .subscribe({
-          next: (data) => this.contactoProveedors = data,
+          next: (data) => this.contactoProveedor = data,
           error: (error) => this.errorHandler.handleServerError(error.error)
         });
   }
@@ -52,7 +52,7 @@ export class ContactoProveedorListComponent implements OnInit, OnDestroy {
     if (confirm(this.getMessage('confirm'))) {
       this.contactoProveedorService.deleteContactoProveedor(cveId)
           .subscribe({
-            next: () => this.router.navigate(['/contactoProveedors'], {
+            next: () => this.router.navigate(['/contactoProveedor'], {
               state: {
                 msgInfo: this.getMessage('deleted')
               }

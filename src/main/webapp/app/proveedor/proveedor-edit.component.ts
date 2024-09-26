@@ -58,7 +58,7 @@ export class ProveedorEditComponent implements OnInit {
     const data = new ProveedorDTO(this.editForm.value);
     this.proveedorService.updateProveedor(this.currentPveId!, data)
         .subscribe({
-          next: () => this.router.navigate(['/proveedors'], {
+          next: () => this.router.navigate(['/proveedor'], {
             state: {
               msgSuccess: this.getMessage('updated')
             }

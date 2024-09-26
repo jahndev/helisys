@@ -39,7 +39,7 @@ public class Transaccion {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tce_tvo_id", nullable = false)
-    private TrasaccionEvento tceTvo;
+    private TransaccionEvento tceTvo;
 
     @OneToMany(mappedBy = "tcoTce")
     private Set<TransaccionesProducto> tcoTceTransaccionesProducto;

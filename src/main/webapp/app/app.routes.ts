@@ -18,9 +18,9 @@ import { AeronaveEditComponent } from './aeronave/aeronave-edit.component';
 import { ContactoProveedorListComponent } from './contacto-proveedor/contacto-proveedor-list.component';
 import { ContactoProveedorAddComponent } from './contacto-proveedor/contacto-proveedor-add.component';
 import { ContactoProveedorEditComponent } from './contacto-proveedor/contacto-proveedor-edit.component';
-import { TrasaccionEventoListComponent } from './trasaccion-evento/trasaccion-evento-list.component';
-import { TrasaccionEventoAddComponent } from './trasaccion-evento/trasaccion-evento-add.component';
-import { TrasaccionEventoEditComponent } from './trasaccion-evento/trasaccion-evento-edit.component';
+import { TransaccionEventoListComponent } from './transaccion-evento/transaccion-evento-list.component';
+import { TransaccionEventoAddComponent } from './transaccion-evento/transaccion-evento-add.component';
+import { TransaccionEventoEditComponent } from './transaccion-evento/transaccion-evento-edit.component';
 import { TransaccionListComponent } from './transaccion/transaccion-list.component';
 import { TransaccionAddComponent } from './transaccion/transaccion-add.component';
 import { TransaccionEditComponent } from './transaccion/transaccion-edit.component';
@@ -52,17 +52,17 @@ export const routes: Routes = [
     title: $localize`:@@usuario.edit.headline:Edit Usuario`
   },
   {
-    path: 'proveedors',
+    path: 'proveedor',
     component: ProveedorListComponent,
-    title: $localize`:@@proveedor.list.headline:Proveedors`
+    title: $localize`:@@proveedor.list.headline:Proveedor`
   },
   {
-    path: 'proveedors/add',
+    path: 'proveedor/add',
     component: ProveedorAddComponent,
     title: $localize`:@@proveedor.add.headline:Add Proveedor`
   },
   {
-    path: 'proveedors/edit/:pveId',
+    path: 'proveedor/edit/:pveId',
     component: ProveedorEditComponent,
     title: $localize`:@@proveedor.edit.headline:Edit Proveedor`
   },
@@ -82,17 +82,17 @@ export const routes: Routes = [
     title: $localize`:@@pedidosCompra.edit.headline:Edit Pedidos Compra`
   },
   {
-    path: 'productos',
+    path: 'producto',
     component: ProductoListComponent,
-    title: $localize`:@@producto.list.headline:Productoes`
+    title: $localize`:@@producto.list.headline:Producto`
   },
   {
-    path: 'productos/add',
+    path: 'producto/add',
     component: ProductoAddComponent,
     title: $localize`:@@producto.add.headline:Add Producto`
   },
   {
-    path: 'productos/edit/:proId',
+    path: 'producto/edit/:proId',
     component: ProductoEditComponent,
     title: $localize`:@@producto.edit.headline:Edit Producto`
   },
@@ -112,34 +112,34 @@ export const routes: Routes = [
     title: $localize`:@@aeronave.edit.headline:Edit Aeronave`
   },
   {
-    path: 'contactoProveedors',
+    path: 'contactoProveedor',
     component: ContactoProveedorListComponent,
-    title: $localize`:@@contactoProveedor.list.headline:Contacto Proveedors`
+    title: $localize`:@@contactoProveedor.list.headline:Contacto Proveedor`
   },
   {
-    path: 'contactoProveedors/add',
+    path: 'contactoProveedor/add',
     component: ContactoProveedorAddComponent,
     title: $localize`:@@contactoProveedor.add.headline:Add Contacto Proveedor`
   },
   {
-    path: 'contactoProveedors/edit/:cveId',
+    path: 'contactoProveedor/edit/:cveId',
     component: ContactoProveedorEditComponent,
     title: $localize`:@@contactoProveedor.edit.headline:Edit Contacto Proveedor`
   },
   {
-    path: 'trasaccionEventos',
-    component: TrasaccionEventoListComponent,
-    title: $localize`:@@trasaccionEvento.list.headline:Trasaccion Eventoes`
+    path: 'transaccionEvento',
+    component: TransaccionEventoListComponent,
+    title: $localize`:@@transaccionEvento.list.headline:Transaccion Evento`
   },
   {
-    path: 'trasaccionEventos/add',
-    component: TrasaccionEventoAddComponent,
-    title: $localize`:@@trasaccionEvento.add.headline:Add Trasaccion Evento`
+    path: 'transaccionEvento/add',
+    component: TransaccionEventoAddComponent,
+    title: $localize`:@@transaccionEvento.add.headline:Add Transaccion Evento`
   },
   {
-    path: 'trasaccionEventos/edit/:tvoId',
-    component: TrasaccionEventoEditComponent,
-    title: $localize`:@@trasaccionEvento.edit.headline:Edit Trasaccion Evento`
+    path: 'transaccionEvento/edit/:tvoId',
+    component: TransaccionEventoEditComponent,
+    title: $localize`:@@transaccionEvento.edit.headline:Edit Transaccion Evento`
   },
   {
     path: 'transaccions',
@@ -157,17 +157,17 @@ export const routes: Routes = [
     title: $localize`:@@transaccion.edit.headline:Edit Transaccion`
   },
   {
-    path: 'pedidosProductos',
+    path: 'pedidosProducto',
     component: PedidosProductoListComponent,
     title: $localize`:@@pedidosProducto.list.headline:Pedidos Productoes`
   },
   {
-    path: 'pedidosProductos/add',
+    path: 'pedidosProducto/add',
     component: PedidosProductoAddComponent,
     title: $localize`:@@pedidosProducto.add.headline:Add Pedidos Producto`
   },
   {
-    path: 'pedidosProductos/edit/:pptId',
+    path: 'pedidosProducto/edit/:pptId',
     component: PedidosProductoEditComponent,
     title: $localize`:@@pedidosProducto.edit.headline:Edit Pedidos Producto`
   },

@@ -3,20 +3,20 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
 import { InputRowComponent } from 'app/common/input-row/input-row.component';
-import { TrasaccionEventoService } from 'app/trasaccion-evento/trasaccion-evento.service';
-import { TrasaccionEventoDTO } from 'app/trasaccion-evento/trasaccion-evento.model';
+import { TransaccionEventoService } from 'app/transaccion-evento/transaccion-evento.service';
+import { TransaccionEventoDTO } from 'app/transaccion-evento/transaccion-evento.model';
 import { ErrorHandler } from 'app/common/error-handler.injectable';
 
 
 @Component({
-  selector: 'app-trasaccion-evento-add',
+  selector: 'app-transaccion-evento-add',
   standalone: true,
   imports: [CommonModule, RouterLink, ReactiveFormsModule, InputRowComponent],
-  templateUrl: './trasaccion-evento-add.component.html'
+  templateUrl: './transaccion-evento-add.component.html'
 })
-export class TrasaccionEventoAddComponent implements OnInit {
+export class TransaccionEventoAddComponent implements OnInit {
 
-  trasaccionEventoService = inject(TrasaccionEventoService);
+  transaccionEventoService = inject(TransaccionEventoService);
   router = inject(Router);
   errorHandler = inject(ErrorHandler);
 
@@ -31,18 +31,18 @@ export class TrasaccionEventoAddComponent implements OnInit {
 
   getMessage(key: string, details?: any) {
     const messages: Record<string, string> = {
-      created: $localize`:@@trasaccionEvento.create.success:Trasaccion Evento was created successfully.`
+      created: $localize`:@@transaccionEvento.create.success:Transaccion Evento was created successfully.`
     };
     return messages[key];
   }
 
   ngOnInit() {
-    this.trasaccionEventoService.getTvoTteValues()
+    this.transaccionEventoService.getTvoTteValues()
         .subscribe({
           next: (data) => this.tvoTteValues = data,
           error: (error) => this.errorHandler.handleServerError(error.error)
         });
-    this.trasaccionEventoService.getAeronavesAnvValues()
+    this.transaccionEventoService.getAeronavesAnvValues()
         .subscribe({
           next: (data) => this.aeronavesAnvValues = data,
           error: (error) => this.errorHandler.handleServerError(error.error)
@@ -55,10 +55,10 @@ export class TrasaccionEventoAddComponent implements OnInit {
     if (!this.addForm.valid) {
       return;
     }
-    const data = new TrasaccionEventoDTO(this.addForm.value);
-    this.trasaccionEventoService.createTrasaccionEvento(data)
+    const data = new TransaccionEventoDTO(this.addForm.value);
+    this.transaccionEventoService.createTransaccionEvento(data)
         .subscribe({
-          next: () => this.router.navigate(['/trasaccionEventos'], {
+          next: () => this.router.navigate(['/transaccionEvento'], {
             state: {
               msgSuccess: this.getMessage('created')
             }

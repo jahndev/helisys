@@ -25,8 +25,8 @@ public class TipoProductoService {
     }
 
     public List<TipoProductoDTO> findAll() {
-        final List<TipoProducto> tipoProductoes = tipoProductoRepository.findAll(Sort.by("tpoIdo"));
-        return tipoProductoes.stream()
+        final List<TipoProducto> tipoProductos = tipoProductoRepository.findAll(Sort.by("tpoIdo"));
+        return tipoProductos.stream()
                 .map(tipoProducto -> mapToDTO(tipoProducto, new TipoProductoDTO()))
                 .toList();
     }

@@ -1,6 +1,6 @@
-export class TrasaccionEventoDTO {
+export class TransaccionEventoDTO {
 
-  constructor(data:Partial<TrasaccionEventoDTO>) {
+  constructor(data:Partial<TransaccionEventoDTO>) {
     Object.assign(this, data);
   }
 

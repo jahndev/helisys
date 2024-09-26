@@ -12,9 +12,9 @@ import { transformRecordToMap } from 'app/common/utils';
 export class ProductoService {
 
   http = inject(HttpClient);
-  resourcePath = environment.apiPath + '/api/productos';
+  resourcePath = environment.apiPath + '/api/producto';
 
-  getAllProductoes() {
+  getAllProducto() {
     return this.http.get<ProductoDTO[]>(this.resourcePath);
   }
 

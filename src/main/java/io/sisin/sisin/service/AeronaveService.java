@@ -2,11 +2,11 @@ package io.sisin.sisin.service;
 
 import io.sisin.sisin.domain.Aeronave;
 import io.sisin.sisin.domain.ModeloAeronave;
-import io.sisin.sisin.domain.TrasaccionEvento;
+import io.sisin.sisin.domain.TransaccionEvento;
 import io.sisin.sisin.model.AeronaveDTO;
 import io.sisin.sisin.repos.AeronaveRepository;
 import io.sisin.sisin.repos.ModeloAeronaveRepository;
-import io.sisin.sisin.repos.TrasaccionEventoRepository;
+import io.sisin.sisin.repos.TransaccionEventoRepository;
 import io.sisin.sisin.util.NotFoundException;
 import io.sisin.sisin.util.ReferencedWarning;
 import java.util.List;
@@ -18,14 +18,14 @@ import org.springframework.stereotype.Service;
 public class AeronaveService {
 
     private final AeronaveRepository aeronaveRepository;
-    private final TrasaccionEventoRepository trasaccionEventoRepository;
+    private final TransaccionEventoRepository transaccionEventoRepository;
     private final ModeloAeronaveRepository modeloAeronaveRepository;
 
     public AeronaveService(final AeronaveRepository aeronaveRepository,
-            final TrasaccionEventoRepository trasaccionEventoRepository,
+            final TransaccionEventoRepository transaccionEventoRepository,
             final ModeloAeronaveRepository modeloAeronaveRepository) {
         this.aeronaveRepository = aeronaveRepository;
-        this.trasaccionEventoRepository = trasaccionEventoRepository;
+        this.transaccionEventoRepository = transaccionEventoRepository;
         this.modeloAeronaveRepository = modeloAeronaveRepository;
     }
 
@@ -80,10 +80,10 @@ public class AeronaveService {
         final ReferencedWarning referencedWarning = new ReferencedWarning();
         final Aeronave aeronave = aeronaveRepository.findById(anvId)
                 .orElseThrow(NotFoundException::new);
-        final TrasaccionEvento aeronavesAnvTrasaccionEvento = trasaccionEventoRepository.findFirstByAeronavesAnv(aeronave);
-        if (aeronavesAnvTrasaccionEvento != null) {
-            referencedWarning.setKey("aeronave.trasaccionEvento.aeronavesAnv.referenced");
-            referencedWarning.addParam(aeronavesAnvTrasaccionEvento.getTvoId());
+        final TransaccionEvento aeronavesAnvTransaccionEvento = transaccionEventoRepository.findFirstByAeronavesAnv(aeronave);
+        if (aeronavesAnvTransaccionEvento != null) {
+            referencedWarning.setKey("aeronave.transaccionEvento.aeronavesAnv.referenced");
+            referencedWarning.addParam(aeronavesAnvTransaccionEvento.getTvoId());
             return referencedWarning;
         }
         final ModeloAeronave mreAnvModeloAeronave = modeloAeronaveRepository.findFirstByMreAnv(aeronave);

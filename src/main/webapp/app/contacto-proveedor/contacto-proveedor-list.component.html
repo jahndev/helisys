@@ -1,11 +1,11 @@
 <div class="d-flex flex-wrap mb-4">
-    <h1 class="flex-grow-1" i18n="@@contactoProveedor.list.headline">Contacto Proveedors</h1>
+    <h1 class="flex-grow-1" i18n="@@contactoProveedor.list.headline">Contacto Proveedor</h1>
     <div>
-        <a routerLink="/contactoProveedors/add" class="btn btn-primary ms-2" i18n="@@contactoProveedor.list.createNew">Create new Contacto Proveedor</a>
+        <a routerLink="/contactoProveedor/add" class="btn btn-primary ms-2" i18n="@@contactoProveedor.list.createNew">Create new Contacto Proveedor</a>
     </div>
 </div>
-@if (!contactoProveedors || contactoProveedors.length === 0) {
-<div i18n="@@contactoProveedor.list.empty">No Contacto Proveedors could be found.</div>
+@if (!contactoProveedor || contactoProveedor.length === 0) {
+<div i18n="@@contactoProveedor.list.empty">No Contacto Proveedor could be found.</div>
 } @else {
 <div class="table-responsive">
     <table class="table table-striped table-hover align-middle">
@@ -21,7 +21,7 @@
             </tr>
         </thead>
         <tbody>
-            @for (contactoProveedor of contactoProveedors; track contactoProveedor.cveId) {
+            @for (contactoProveedor of contactoProveedor; track contactoProveedor.cveId) {
             <tr>
                 <td>{{ contactoProveedor.cveId }}</td>
                 <td>{{ contactoProveedor.cveNombre }}</td>
@@ -31,7 +31,7 @@
                 <td>{{ contactoProveedor.cpePve }}</td>
                 <td>
                     <div class="float-end text-nowrap">
-                        <a [routerLink]="['/contactoProveedors/edit', contactoProveedor.cveId]" class="btn btn-sm btn-secondary" i18n="@@contactoProveedor.list.edit">Edit</a>
+                        <a [routerLink]="['/contactoProveedor/edit', contactoProveedor.cveId]" class="btn btn-sm btn-secondary" i18n="@@contactoProveedor.list.edit">Edit</a>
                         <button type="button" (click)="confirmDelete(contactoProveedor.cveId!)" class="btn btn-sm btn-secondary" i18n="@@contactoProveedor.list.delete">Delete</button>
                     </div>
                 </td>

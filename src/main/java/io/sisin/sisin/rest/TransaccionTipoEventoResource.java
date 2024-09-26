@@ -1,7 +1,7 @@
 package io.sisin.sisin.rest;
 
-import io.sisin.sisin.model.TrasaccionTipoEventoDTO;
-import io.sisin.sisin.service.TrasaccionTipoEventoService;
+import io.sisin.sisin.model.TransaccionTipoEventoDTO;
+import io.sisin.sisin.service.TransaccionTipoEventoService;
 import io.sisin.sisin.util.ReferencedException;
 import io.sisin.sisin.util.ReferencedWarning;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -21,52 +21,52 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping(value = "/api/trasaccionTipoEventos", produces = MediaType.APPLICATION_JSON_VALUE)
-public class TrasaccionTipoEventoResource {
+@RequestMapping(value = "/api/transaccionTipoEvento", produces = MediaType.APPLICATION_JSON_VALUE)
+public class TransaccionTipoEventoResource {
 
-    private final TrasaccionTipoEventoService trasaccionTipoEventoService;
+    private final TransaccionTipoEventoService transaccionTipoEventoService;
 
-    public TrasaccionTipoEventoResource(
-            final TrasaccionTipoEventoService trasaccionTipoEventoService) {
-        this.trasaccionTipoEventoService = trasaccionTipoEventoService;
+    public TransaccionTipoEventoResource(
+            final TransaccionTipoEventoService transaccionTipoEventoService) {
+        this.transaccionTipoEventoService = transaccionTipoEventoService;
     }
 
     @GetMapping
-    public ResponseEntity<List<TrasaccionTipoEventoDTO>> getAllTrasaccionTipoEventos() {
-        return ResponseEntity.ok(trasaccionTipoEventoService.findAll());
+    public ResponseEntity<List<TransaccionTipoEventoDTO>> getAllTransaccionTipoEvento() {
+        return ResponseEntity.ok(transaccionTipoEventoService.findAll());
     }
 
     @GetMapping("/{tteId}")
-    public ResponseEntity<TrasaccionTipoEventoDTO> getTrasaccionTipoEvento(
+    public ResponseEntity<TransaccionTipoEventoDTO> getTransaccionTipoEvento(
             @PathVariable(name = "tteId") final Integer tteId) {
-        return ResponseEntity.ok(trasaccionTipoEventoService.get(tteId));
+        return ResponseEntity.ok(transaccionTipoEventoService.get(tteId));
     }
 
     @PostMapping
     @ApiResponse(responseCode = "201")
-    public ResponseEntity<Integer> createTrasaccionTipoEvento(
-            @RequestBody @Valid final TrasaccionTipoEventoDTO trasaccionTipoEventoDTO) {
-        final Integer createdTteId = trasaccionTipoEventoService.create(trasaccionTipoEventoDTO);
+    public ResponseEntity<Integer> createTransaccionTipoEvento(
+            @RequestBody @Valid final TransaccionTipoEventoDTO transaccionTipoEventoDTO) {
+        final Integer createdTteId = transaccionTipoEventoService.create(transaccionTipoEventoDTO);
         return new ResponseEntity<>(createdTteId, HttpStatus.CREATED);
     }
 
     @PutMapping("/{tteId}")
-    public ResponseEntity<Integer> updateTrasaccionTipoEvento(
+    public ResponseEntity<Integer> updateTransaccionTipoEvento(
             @PathVariable(name = "tteId") final Integer tteId,
-            @RequestBody @Valid final TrasaccionTipoEventoDTO trasaccionTipoEventoDTO) {
-        trasaccionTipoEventoService.update(tteId, trasaccionTipoEventoDTO);
+            @RequestBody @Valid final TransaccionTipoEventoDTO transaccionTipoEventoDTO) {
+        transaccionTipoEventoService.update(tteId, transaccionTipoEventoDTO);
         return ResponseEntity.ok(tteId);
     }
 
     @DeleteMapping("/{tteId}")
     @ApiResponse(responseCode = "204")
-    public ResponseEntity<Void> deleteTrasaccionTipoEvento(
+    public ResponseEntity<Void> deleteTransaccionTipoEvento(
             @PathVariable(name = "tteId") final Integer tteId) {
-        final ReferencedWarning referencedWarning = trasaccionTipoEventoService.getReferencedWarning(tteId);
+        final ReferencedWarning referencedWarning = transaccionTipoEventoService.getReferencedWarning(tteId);
         if (referencedWarning != null) {
             throw new ReferencedException(referencedWarning);
         }
-        trasaccionTipoEventoService.delete(tteId);
+        transaccionTipoEventoService.delete(tteId);
         return ResponseEntity.noContent().build();
     }
 

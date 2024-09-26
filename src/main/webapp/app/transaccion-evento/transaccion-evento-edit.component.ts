@@ -3,21 +3,21 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
 import { InputRowComponent } from 'app/common/input-row/input-row.component';
-import { TrasaccionEventoService } from 'app/trasaccion-evento/trasaccion-evento.service';
-import { TrasaccionEventoDTO } from 'app/trasaccion-evento/trasaccion-evento.model';
+import { TransaccionEventoService } from 'app/transaccion-evento/transaccion-evento.service';
+import { TransaccionEventoDTO } from 'app/transaccion-evento/transaccion-evento.model';
 import { ErrorHandler } from 'app/common/error-handler.injectable';
 import { updateForm } from 'app/common/utils';
 
 
 @Component({
-  selector: 'app-trasaccion-evento-edit',
+  selector: 'app-transaccion-evento-edit',
   standalone: true,
   imports: [CommonModule, RouterLink, ReactiveFormsModule, InputRowComponent],
-  templateUrl: './trasaccion-evento-edit.component.html'
+  templateUrl: './transaccion-evento-edit.component.html'
 })
-export class TrasaccionEventoEditComponent implements OnInit {
+export class TransaccionEventoEditComponent implements OnInit {
 
-  trasaccionEventoService = inject(TrasaccionEventoService);
+  transaccionEventoService = inject(TransaccionEventoService);
   route = inject(ActivatedRoute);
   router = inject(Router);
   errorHandler = inject(ErrorHandler);
@@ -35,24 +35,24 @@ export class TrasaccionEventoEditComponent implements OnInit {
 
   getMessage(key: string, details?: any) {
     const messages: Record<string, string> = {
-      updated: $localize`:@@trasaccionEvento.update.success:Trasaccion Evento was updated successfully.`
+      updated: $localize`:@@transaccionEvento.update.success:Transaccion Evento was updated successfully.`
     };
     return messages[key];
   }
 
   ngOnInit() {
     this.currentTvoId = +this.route.snapshot.params['tvoId'];
-    this.trasaccionEventoService.getTvoTteValues()
+    this.transaccionEventoService.getTvoTteValues()
         .subscribe({
           next: (data) => this.tvoTteValues = data,
           error: (error) => this.errorHandler.handleServerError(error.error)
         });
-    this.trasaccionEventoService.getAeronavesAnvValues()
+    this.transaccionEventoService.getAeronavesAnvValues()
         .subscribe({
           next: (data) => this.aeronavesAnvValues = data,
           error: (error) => this.errorHandler.handleServerError(error.error)
         });
-    this.trasaccionEventoService.getTrasaccionEvento(this.currentTvoId!)
+    this.transaccionEventoService.getTransaccionEvento(this.currentTvoId!)
         .subscribe({
           next: (data) => updateForm(this.editForm, data),
           error: (error) => this.errorHandler.handleServerError(error.error)
@@ -65,10 +65,10 @@ export class TrasaccionEventoEditComponent implements OnInit {
     if (!this.editForm.valid) {
       return;
     }
-    const data = new TrasaccionEventoDTO(this.editForm.value);
-    this.trasaccionEventoService.updateTrasaccionEvento(this.currentTvoId!, data)
+    const data = new TransaccionEventoDTO(this.editForm.value);
+    this.transaccionEventoService.updateTransaccionEvento(this.currentTvoId!, data)
         .subscribe({
-          next: () => this.router.navigate(['/trasaccionEventos'], {
+          next: () => this.router.navigate(['/transaccionEvento'], {
             state: {
               msgSuccess: this.getMessage('updated')
             }

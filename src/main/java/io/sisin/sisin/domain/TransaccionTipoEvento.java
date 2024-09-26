@@ -13,10 +13,10 @@ import lombok.Setter;
 
 
 @Entity
-@Table(name = "TrasaccionTipoEvento")
+@Table(name = "TransaccionTipoEvento")
 @Getter
 @Setter
-public class TrasaccionTipoEvento {
+public class TransaccionTipoEvento {
 
     @Id
     @Column(nullable = false, updatable = false)
@@ -27,6 +27,6 @@ public class TrasaccionTipoEvento {
     private String tteNombre;
 
     @OneToMany(mappedBy = "tvoTte")
-    private Set<TrasaccionEvento> tvoTteTrasaccionEvento;
+    private Set<TransaccionEvento> tvoTteTransaccionEvento;
 
 }

@@ -2,12 +2,12 @@ package io.sisin.sisin.service;
 
 import io.sisin.sisin.domain.Transaccion;
 import io.sisin.sisin.domain.TransaccionesProducto;
-import io.sisin.sisin.domain.TrasaccionEvento;
+import io.sisin.sisin.domain.TransaccionEvento;
 import io.sisin.sisin.domain.Usuario;
 import io.sisin.sisin.model.TransaccionDTO;
 import io.sisin.sisin.repos.TransaccionRepository;
 import io.sisin.sisin.repos.TransaccionesProductoRepository;
-import io.sisin.sisin.repos.TrasaccionEventoRepository;
+import io.sisin.sisin.repos.TransaccionEventoRepository;
 import io.sisin.sisin.repos.UsuarioRepository;
 import io.sisin.sisin.util.NotFoundException;
 import io.sisin.sisin.util.ReferencedWarning;
@@ -21,16 +21,16 @@ public class TransaccionService {
 
     private final TransaccionRepository transaccionRepository;
     private final UsuarioRepository usuarioRepository;
-    private final TrasaccionEventoRepository trasaccionEventoRepository;
+    private final TransaccionEventoRepository transaccionEventoRepository;
     private final TransaccionesProductoRepository transaccionesProductoRepository;
 
     public TransaccionService(final TransaccionRepository transaccionRepository,
             final UsuarioRepository usuarioRepository,
-            final TrasaccionEventoRepository trasaccionEventoRepository,
+            final TransaccionEventoRepository transaccionEventoRepository,
             final TransaccionesProductoRepository transaccionesProductoRepository) {
         this.transaccionRepository = transaccionRepository;
         this.usuarioRepository = usuarioRepository;
-        this.trasaccionEventoRepository = trasaccionEventoRepository;
+        this.transaccionEventoRepository = transaccionEventoRepository;
         this.transaccionesProductoRepository = transaccionesProductoRepository;
     }
 
@@ -81,7 +81,7 @@ public class TransaccionService {
         final Usuario tceUsr = transaccionDTO.getTceUsr() == null ? null : usuarioRepository.findById(transaccionDTO.getTceUsr())
                 .orElseThrow(() -> new NotFoundException("tceUsr not found"));
         transaccion.setTceUsr(tceUsr);
-        final TrasaccionEvento tceTvo = transaccionDTO.getTceTvo() == null ? null : trasaccionEventoRepository.findById(transaccionDTO.getTceTvo())
+        final TransaccionEvento tceTvo = transaccionDTO.getTceTvo() == null ? null : transaccionEventoRepository.findById(transaccionDTO.getTceTvo())
                 .orElseThrow(() -> new NotFoundException("tceTvo not found"));
         transaccion.setTceTvo(tceTvo);
         return transaccion;

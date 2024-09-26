@@ -40,8 +40,8 @@ public class ProductoService {
     }
 
     public List<ProductoDTO> findAll() {
-        final List<Producto> productoes = productoRepository.findAll(Sort.by("proId"));
-        return productoes.stream()
+        final List<Producto> productos = productoRepository.findAll(Sort.by("proId"));
+        return productos.stream()
                 .map(producto -> mapToDTO(producto, new ProductoDTO()))
                 .toList();
     }
