@@ -59,7 +59,7 @@ export class PedidosProductoAddComponent implements OnInit {
     const data = new PedidosProductoDTO(this.addForm.value);
     this.pedidosProductoService.createPedidosProducto(data)
         .subscribe({
-          next: () => this.router.navigate(['/pedidosProductos'], {
+          next: () => this.router.navigate(['/pedidosProducto'], {
             state: {
               msgSuccess: this.getMessage('created')
             }

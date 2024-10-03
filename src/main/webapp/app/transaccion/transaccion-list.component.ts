@@ -17,7 +17,7 @@ export class TransaccionListComponent implements OnInit, OnDestroy {
   transaccionService = inject(TransaccionService);
   errorHandler = inject(ErrorHandler);
   router = inject(Router);
-  transaccions?: TransaccionDTO[];
+  transaccion?: TransaccionDTO[];
   navigationSubscription?: Subscription;
 
   getMessage(key: string, details?: any) {
@@ -41,11 +41,11 @@ export class TransaccionListComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.navigationSubscription!.unsubscribe();
   }
-  
+
   loadData() {
-    this.transaccionService.getAllTransaccions()
+    this.transaccionService.getAllTransaccion()
         .subscribe({
-          next: (data) => this.transaccions = data,
+          next: (data) => this.transaccion = data,
           error: (error) => this.errorHandler.handleServerError(error.error)
         });
   }
@@ -54,7 +54,7 @@ export class TransaccionListComponent implements OnInit, OnDestroy {
     if (confirm(this.getMessage('confirm'))) {
       this.transaccionService.deleteTransaccion(tceId)
           .subscribe({
-            next: () => this.router.navigate(['/transaccions'], {
+            next: () => this.router.navigate(['/transaccion'], {
               state: {
                 msgInfo: this.getMessage('deleted')
               }
@@ -62,7 +62,7 @@ export class TransaccionListComponent implements OnInit, OnDestroy {
             error: (error) => {
               if (error.error?.code === 'REFERENCED') {
                 const messageParts = error.error.message.split(',');
-                this.router.navigate(['/transaccions'], {
+                this.router.navigate(['/transaccion'], {
                   state: {
                     msgError: this.getMessage(messageParts[0], { id: messageParts[1] })
                   }

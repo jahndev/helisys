@@ -69,7 +69,7 @@ export class TransaccionEditComponent implements OnInit {
     const data = new TransaccionDTO(this.editForm.value);
     this.transaccionService.updateTransaccion(this.currentTceId!, data)
         .subscribe({
-          next: () => this.router.navigate(['/transaccions'], {
+          next: () => this.router.navigate(['/transaccion'], {
             state: {
               msgSuccess: this.getMessage('updated')
             }

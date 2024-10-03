@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping(value = "/api/transaccions", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/transaccion", produces = MediaType.APPLICATION_JSON_VALUE)
 public class TransaccionResource {
 
     private final TransaccionService transaccionService;
@@ -44,7 +44,7 @@ public class TransaccionResource {
     }
 
     @GetMapping
-    public ResponseEntity<List<TransaccionDTO>> getAllTransaccions() {
+    public ResponseEntity<List<TransaccionDTO>> getAllTransaccion() {
         return ResponseEntity.ok(transaccionService.findAll());
     }
 

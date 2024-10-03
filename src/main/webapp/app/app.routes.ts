@@ -142,24 +142,24 @@ export const routes: Routes = [
     title: $localize`:@@transaccionEvento.edit.headline:Edit Transaccion Evento`
   },
   {
-    path: 'transaccions',
+    path: 'transaccion',
     component: TransaccionListComponent,
-    title: $localize`:@@transaccion.list.headline:Transaccions`
+    title: $localize`:@@transaccion.list.headline:Transaccion`
   },
   {
-    path: 'transaccions/add',
+    path: 'transaccion/add',
     component: TransaccionAddComponent,
     title: $localize`:@@transaccion.add.headline:Add Transaccion`
   },
   {
-    path: 'transaccions/edit/:tceId',
+    path: 'transaccion/edit/:tceId',
     component: TransaccionEditComponent,
     title: $localize`:@@transaccion.edit.headline:Edit Transaccion`
   },
   {
     path: 'pedidosProducto',
     component: PedidosProductoListComponent,
-    title: $localize`:@@pedidosProducto.list.headline:Pedidos Productoes`
+    title: $localize`:@@pedidosProducto.list.headline:Pedidos Producto`
   },
   {
     path: 'pedidosProducto/add',

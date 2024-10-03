@@ -59,7 +59,7 @@ export class TransaccionAddComponent implements OnInit {
     const data = new TransaccionDTO(this.addForm.value);
     this.transaccionService.createTransaccion(data)
         .subscribe({
-          next: () => this.router.navigate(['/transaccions'], {
+          next: () => this.router.navigate(['/transaccion'], {
             state: {
               msgSuccess: this.getMessage('created')
             }

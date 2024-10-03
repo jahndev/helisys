@@ -1,11 +1,11 @@
 <div class="d-flex flex-wrap mb-4">
-    <h1 class="flex-grow-1" i18n="@@transaccion.list.headline">Transaccions</h1>
+    <h1 class="flex-grow-1" i18n="@@transaccion.list.headline">Transaccion</h1>
     <div>
-        <a routerLink="/transaccions/add" class="btn btn-primary ms-2" i18n="@@transaccion.list.createNew">Create new Transaccion</a>
+        <a routerLink="/transaccion/add" class="btn btn-primary ms-2" i18n="@@transaccion.list.createNew">Create new Transaccion</a>
     </div>
 </div>
-@if (!transaccions || transaccions.length === 0) {
-<div i18n="@@transaccion.list.empty">No Transaccions could be found.</div>
+@if (!transaccion || transaccion.length === 0) {
+<div i18n="@@transaccion.list.empty">No Transaccion could be found.</div>
 } @else {
 <div class="table-responsive">
     <table class="table table-striped table-hover align-middle">
@@ -20,7 +20,7 @@
             </tr>
         </thead>
         <tbody>
-            @for (transaccion of transaccions; track transaccion.tceId) {
+            @for (transaccion of transaccion; track transaccion.tceId) {
             <tr>
                 <td>{{ transaccion.tceId }}</td>
                 <td>{{ transaccion.tceFechaTransaccion }}</td>
@@ -29,7 +29,7 @@
                 <td>{{ transaccion.tceTvo }}</td>
                 <td>
                     <div class="float-end text-nowrap">
-                        <a [routerLink]="['/transaccions/edit', transaccion.tceId]" class="btn btn-sm btn-secondary" i18n="@@transaccion.list.edit">Edit</a>
+                        <a [routerLink]="['//edit', transaccion.tceId]" class="btn btn-sm btn-secondary" i18n="@@transaccion.list.edit">Edit</a>
                         <button type="button" (click)="confirmDelete(transaccion.tceId!)" class="btn btn-sm btn-secondary" i18n="@@transaccion.list.delete">Delete</button>
                     </div>
                 </td>

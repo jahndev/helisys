@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping(value = "/api/pedidosProductos", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/pedidosProducto", produces = MediaType.APPLICATION_JSON_VALUE)
 public class PedidosProductoResource {
 
     private final PedidosProductoService pedidosProductoService;
@@ -42,7 +42,7 @@ public class PedidosProductoResource {
     }
 
     @GetMapping
-    public ResponseEntity<List<PedidosProductoDTO>> getAllPedidosProductos() {
+    public ResponseEntity<List<PedidosProductoDTO>> getAllPedidosProducto() {
         return ResponseEntity.ok(pedidosProductoService.findAll());
     }
 

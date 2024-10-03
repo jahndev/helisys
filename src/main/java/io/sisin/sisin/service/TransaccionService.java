@@ -35,8 +35,8 @@ public class TransaccionService {
     }
 
     public List<TransaccionDTO> findAll() {
-        final List<Transaccion> transaccions = transaccionRepository.findAll(Sort.by("tceId"));
-        return transaccions.stream()
+        final List<Transaccion> transacciones = transaccionRepository.findAll(Sort.by("tceId"));
+        return transacciones.stream()
                 .map(transaccion -> mapToDTO(transaccion, new TransaccionDTO()))
                 .toList();
     }

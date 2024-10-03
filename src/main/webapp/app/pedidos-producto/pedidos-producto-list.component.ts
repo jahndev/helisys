@@ -17,7 +17,7 @@ export class PedidosProductoListComponent implements OnInit, OnDestroy {
   pedidosProductoService = inject(PedidosProductoService);
   errorHandler = inject(ErrorHandler);
   router = inject(Router);
-  pedidosProductoes?: PedidosProductoDTO[];
+  pedidosProducto?: PedidosProductoDTO[];
   navigationSubscription?: Subscription;
 
   getMessage(key: string, details?: any) {
@@ -39,11 +39,11 @@ export class PedidosProductoListComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.navigationSubscription!.unsubscribe();
   }
-  
+
   loadData() {
-    this.pedidosProductoService.getAllPedidosProductoes()
+    this.pedidosProductoService.getAllPedidosProducto()
         .subscribe({
-          next: (data) => this.pedidosProductoes = data,
+          next: (data) => this.pedidosProducto = data,
           error: (error) => this.errorHandler.handleServerError(error.error)
         });
   }
@@ -52,7 +52,7 @@ export class PedidosProductoListComponent implements OnInit, OnDestroy {
     if (confirm(this.getMessage('confirm'))) {
       this.pedidosProductoService.deletePedidosProducto(pptId)
           .subscribe({
-            next: () => this.router.navigate(['/pedidosProductos'], {
+            next: () => this.router.navigate(['/pedidosProducto'], {
               state: {
                 msgInfo: this.getMessage('deleted')
               }

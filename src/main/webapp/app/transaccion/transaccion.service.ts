@@ -12,9 +12,9 @@ import { transformRecordToMap } from 'app/common/utils';
 export class TransaccionService {
 
   http = inject(HttpClient);
-  resourcePath = environment.apiPath + '/api/transaccions';
+  resourcePath = environment.apiPath + '/api/transaccion';
 
-  getAllTransaccions() {
+  getAllTransaccion() {
     return this.http.get<TransaccionDTO[]>(this.resourcePath);
   }
 
